@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://p170vwcobcvx"]
+
+[ext_resource type="Environment" uid="uid://bu3qfv88mu13s" path="res://assets/environment/main.tres" id="1_4yvys"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_56kek"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n11on"]
+size = Vector3(1, 0.5, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CamAndLights" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CamAndLights"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 10, 0)
+environment = ExtResource("1_4yvys")
+attributes = SubResource("CameraAttributesPractical_56kek")
+projection = 1
+current = true
+size = 23.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -0.5)
+mesh = SubResource("BoxMesh_n11on")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.25, -0.5)
+mesh = SubResource("BoxMesh_n11on")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.25, -1.5)
+mesh = SubResource("BoxMesh_n11on")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -1.5)
+mesh = SubResource("BoxMesh_n11on")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.25, -2.5)
+mesh = SubResource("BoxMesh_n11on")
