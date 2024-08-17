@@ -1,16 +1,18 @@
-[gd_scene load_steps=20 format=4 uid="uid://ci1ylwllts3l5"]
+[gd_scene load_steps=19 format=4 uid="uid://ci1ylwllts3l5"]
 
-[ext_resource type="Texture2D" uid="uid://3kk045oknbn5" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="1_03gqs"]
-[ext_resource type="Texture2D" uid="uid://dvnmgu2ja0kdp" path="res://assets/tilemaps/tilesheet_complete.png" id="1_244vq"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="2_ftqkv"]
-[ext_resource type="Script" path="res://core.gd" id="4_0sakg"]
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="5_7h1v1"]
+[ext_resource type="Texture2D" uid="uid://dvnmgu2ja0kdp" path="res://assets/tilemaps/tilesheet_complete.png" id="1_dcuf0"]
+[ext_resource type="Texture2D" uid="uid://dmslk025xtqsb" path="res://assets/sprites/corevalues_tower_of_doom.png" id="2_5h0ik"]
+[ext_resource type="PackedScene" uid="uid://bdbslnkr821ac" path="res://components/player.tscn" id="3_4scbl"]
+[ext_resource type="Texture2D" uid="uid://3kk045oknbn5" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="3_byqh5"]
+[ext_resource type="Script" path="res://scripts/core.gd" id="4_2of71"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="5_1lvqo"]
+[ext_resource type="PackedScene" uid="uid://b5em20nkus7n0" path="res://components/enemy.tscn" id="5_o8ci7"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_5yd8j"]
 tile_data = PackedInt32Array(65536, 262146, 2, 131072, 262146, 2, 196608, 262146, 2, 1, 262146, 2, 65537, 262146, 2, 131073, 327682, 2, 196609, 262146, 2, 262145, 262146, 2, 131074, 262146, 2)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_84lr0"]
-texture = ExtResource("1_244vq")
+texture = ExtResource("1_dcuf0")
 texture_region_size = Vector2i(111, 128)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -32)
@@ -285,12 +287,19 @@ texture_region_size = Vector2i(111, 128)
 
 [sub_resource type="TileSet" id="TileSet_u307t"]
 tile_shape = 1
-tile_size = Vector2i(111, 64)
+tile_size = Vector2i(128, 64)
 physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "unlock_cost"
 custom_data_layer_0/type = 2
 sources/2 = SubResource("TileSetAtlasSource_84lr0")
 pattern_0 = SubResource("TileMapPattern_5yd8j")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ls1u5"]
+texture = ExtResource("2_5h0ik")
+texture_region_size = Vector2i(128, 128)
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 30)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_p0ba5"]
 vertices = PackedVector2Array(55.5, 0, 0, 32, -55.5, 0, 0, -32)
@@ -314,7 +323,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(0, -32, -55.5, 0, 0, 32
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4sjpm"]
-texture = ExtResource("1_244vq")
+texture = ExtResource("1_dcuf0")
 texture_region_size = Vector2i(111, 128)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -32)
@@ -591,26 +600,18 @@ texture_region_size = Vector2i(111, 128)
 
 [sub_resource type="TileSet" id="TileSet_yqcid"]
 tile_shape = 1
-tile_size = Vector2i(111, 64)
+tile_size = Vector2i(128, 64)
 navigation_layer_0/layers = 1
 sources/2 = SubResource("TileSetAtlasSource_4sjpm")
+sources/0 = SubResource("TileSetAtlasSource_ls1u5")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kl2yt"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tv08v"]
-size = Vector2(16, 28)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7jjwj"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7w7ek"]
-size = Vector2(16, 16)
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_55ysd"]
-vertices = PackedVector2Array(1656.93, -498, 1650.06, 500.008, -934, 502.977, -934, -499.992)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-944, -510, -944, 513, 1660, 510, 1667, -508)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rxmy8"]
+vertices = PackedVector2Array(483, -314, 483, 370, 65.4531, 0, 56.6797, -32.7266, 56.6797, 32.7266, 32.7266, 56.6797, -393, 370, 0, 65.4531, -32.7266, 56.6797, -56.6797, 32.7266, -393, -314, -65.4531, 0, -56.6797, -32.7266, -32.7266, -56.6797, 0, -65.4531, 32.7266, -56.6797)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(5, 4, 1), PackedInt32Array(5, 1, 6, 7), PackedInt32Array(8, 7, 6), PackedInt32Array(9, 8, 6), PackedInt32Array(9, 6, 10, 11), PackedInt32Array(12, 11, 10), PackedInt32Array(13, 12, 10), PackedInt32Array(13, 10, 0, 14), PackedInt32Array(15, 14, 0), PackedInt32Array(15, 0, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-403, -324, -403, 380, 493, 380, 493, -324)])
 
 [node name="Main" type="Node2D"]
+position = Vector2(-1773, -636)
 
 [node name="TileMaps" type="Node2D" parent="."]
 
@@ -620,10 +621,9 @@ tile_map_data = PackedByteArray("AAD/////AgAGAAIAAAD//wAAAgAGAAAAAAD//wEAAgAGAAA
 tile_set = SubResource("TileSet_u307t")
 
 [node name="TileMapLayer_Buildings" type="TileMapLayer" parent="TileMaps"]
-visible = false
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD///3/AgAIAAYAAAA=")
+tile_map_data = PackedByteArray("AAD///3/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_yqcid")
 
 [node name="TileMapLayer_Buildings2" type="TileMapLayer" parent="TileMaps"]
@@ -636,40 +636,25 @@ z_index = 1
 y_sort_enabled = true
 tile_set = SubResource("TileSet_yqcid")
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("3_4scbl")]
 unique_name_in_owner = true
-physics_interpolation_mode = 1
-position = Vector2(-194, 33)
-motion_mode = 1
-script = ExtResource("2_ftqkv")
-
-[node name="PlayerCollisionShape" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CapsuleShape2D_kl2yt")
-debug_color = Color(0.423215, 0, 0.114052, 0.42)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = SubResource("PlaceholderTexture2D_tv08v")
 
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="Lights"]
-texture = ExtResource("1_03gqs")
+texture = ExtResource("3_byqh5")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Lights"]
 visible = false
 color = Color(0.381703, 0.381703, 0.381703, 1)
 
 [node name="Core" type="Node2D" parent="."]
-script = ExtResource("4_0sakg")
+script = ExtResource("4_2of71")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+process_priority = 10
+script = ExtResource("5_1lvqo")
 
 [node name="Control" type="Control" parent="HUD"]
 layout_mode = 3
@@ -688,47 +673,36 @@ offset_right = -18.0
 text = "Power: "
 metadata/_edit_use_anchors_ = true
 
-[node name="Enemy" type="CharacterBody2D" parent="."]
-position = Vector2(-111, 189)
-script = ExtResource("5_7h1v1")
-speed = 150.0
+[node name="HealthBar" type="ProgressBar" parent="HUD/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_top = 0.037037
+anchor_right = 0.243924
+anchor_bottom = 0.0787037
+show_percentage = false
+metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-shape = SubResource("CapsuleShape2D_7jjwj")
+[node name="Enemy" parent="." instance=ExtResource("5_o8ci7")]
+motion_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-texture = SubResource("PlaceholderTexture2D_7w7ek")
+[node name="Enemy2" parent="." instance=ExtResource("5_o8ci7")]
+position = Vector2(229, -244)
+motion_mode = 1
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
-path_max_distance = 500.0
-avoidance_enabled = true
-avoidance_layers = 2
-avoidance_mask = 3
-debug_enabled = true
+[node name="Enemy3" parent="." instance=ExtResource("5_o8ci7")]
+position = Vector2(317, 100)
+motion_mode = 1
 
-[node name="Enemy2" type="CharacterBody2D" parent="."]
-position = Vector2(334, 175)
-script = ExtResource("5_7h1v1")
-speed = 150.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2"]
-shape = SubResource("CapsuleShape2D_7jjwj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemy2"]
-texture = SubResource("PlaceholderTexture2D_7w7ek")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy2"]
-path_max_distance = 500.0
-avoidance_enabled = true
-avoidance_layers = 2
-avoidance_mask = 3
-debug_enabled = true
+[node name="Enemy4" parent="." instance=ExtResource("5_o8ci7")]
+position = Vector2(-219, -220)
+motion_mode = 1
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_55ysd")
+navigation_polygon = SubResource("NavigationPolygon_rxmy8")
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 88.67
-vertices = PackedVector2Array(-56, 0, 0, 32, 57, -1, -2, -38)
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D"]
+visible = false
+radius = 65.45
+vertices = PackedVector2Array(-56, 0, 0, 32, 57, -1, 0, -32)
 affect_navigation_mesh = true
 carve_navigation_mesh = true

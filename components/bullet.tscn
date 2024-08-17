@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://certxgcwrs0j3"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_mrqb5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kuomi"]
+radius = 2.0
+
+[node name="Bullet" type="RigidBody2D"]
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_mrqb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kuomi")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
