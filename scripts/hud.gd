@@ -1,15 +1,18 @@
 extends CanvasLayer
 
+@onready var game_manager: GameManager = $"/root/GameManager"
 @onready var healthbar: ProgressBar = %HealthBar
-
-@onready var player: Player = %Player
+@onready var killcount: ProgressBar = %DataProgress
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_on_health_changed(player.max_health, player.health)
-	player.health_changed.connect(_on_health_changed)
+	game_manager.update_healthbar.connect(_on_update_health)
+	game_manager.update_killcount.connect(_on_update_killcount)
 
-func _on_health_changed(new_max: int, new_value: int):
-	print_debug("Health changed")
-	healthbar.max_value = new_max
-	healthbar.value = new_value
+func _on_update_health(max_health, current):
+	healthbar.max_value = max_health
+	healthbar.value = current
+
+func _on_update_killcount(kills_to_next_infection, kills):
+	killcount.max_value = kills_to_next_infection
+	killcount.value = kills

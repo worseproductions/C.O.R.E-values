@@ -25,10 +25,12 @@ enum EnemyState {
 @onready var player: Player = %Player
 @onready var ray_cast: RayCast2D = $RayCast2D
 @onready var cooldown_timer: Timer = $AttackCooldown
+@onready var game_manager: GameManager = $"/root/GameManager"
+@onready var health = max_health
 
-var health = max_health
 var last_known_pos: Vector2
-var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
+signal health_changed(max, current)
 
 func _ready() -> void:
 	nav_agent.velocity_computed.connect(Callable(_on_velocity_computed))
@@ -37,10 +39,10 @@ func _ready() -> void:
 func set_movement_target(movement_target: Vector2):
 	nav_agent.set_target_position(movement_target)
 
-func _draw() -> void:
-	draw_circle(Vector2.ZERO, search_radius, Color.ANTIQUE_WHITE, false)
-	draw_circle(Vector2.ZERO, patrol_radius, Color.AQUAMARINE, false)
-	draw_circle(Vector2.ZERO, attack_radius, Color.BROWN, false)
+#func _draw() -> void:
+	#draw_circle(Vector2.ZERO, search_radius, Color.ANTIQUE_WHITE, false)
+	#draw_circle(Vector2.ZERO, patrol_radius, Color.AQUAMARINE, false)
+	#draw_circle(Vector2.ZERO, attack_radius, Color.BROWN, false)
 
 func _physics_process(_delta: float):
 	ray_cast.target_position = player.global_position - ray_cast.global_position
@@ -70,7 +72,7 @@ func _physics_process(_delta: float):
 		nav_agent.target_position = player.global_position
 		navigate(chase_speed)
 		attack_player()
-		
+
 
 func _on_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity
@@ -92,8 +94,8 @@ func navigate(speed: float):
 		_on_velocity_computed(new_velocity)
 
 func get_random_pos_in_radius() -> Vector2:
-	var random_radius = rng.randf_range(0, patrol_radius)
-	var random_angle = rng.randf_range(0, 360)
+	var random_radius = randf_range(0, patrol_radius)
+	var random_angle = randf_range(0, 360)
 	
 	var x = random_radius * cos(random_angle)
 	var y = random_radius * sin(random_angle)
@@ -104,12 +106,14 @@ func attack_player():
 	if not player.global_position.distance_to(global_position) <= attack_radius or not cooldown_timer.is_stopped():
 		return
 	var damage = attack_damage
-	if rng.randf() < crit_chance:
+	if randf() < crit_chance:
 		damage = crit_damage
 	player.take_damage(damage)
 	cooldown_timer.start()
 
 func take_damage(damage: int):
 	health -= damage
+	health_changed.emit(max_health, health)
 	if health <= 0:
+		game_manager.increase_kill_count()
 		queue_free()

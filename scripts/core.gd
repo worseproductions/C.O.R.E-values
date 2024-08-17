@@ -2,7 +2,8 @@ extends Node2D
 
 @export var power: int
 
-@onready var power_label: Label = %HUD/%PowerLabel
+## how far the core has expanded
+@export var influence: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,5 +12,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	power_label.text = "Power: %d" % power
 	pass

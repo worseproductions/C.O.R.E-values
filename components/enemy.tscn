@@ -1,21 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5em20nkus7n0"]
+[gd_scene load_steps=5 format=3 uid="uid://b5em20nkus7n0"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_rp17y"]
+[ext_resource type="Texture2D" uid="uid://cxin522bbk6x3" path="res://assets/sprites/characters/character_robot_wide.png" id="2_v4ko0"]
+[ext_resource type="Texture2D" uid="uid://3kk045oknbn5" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="3_haslj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7jjwj"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7w7ek"]
-size = Vector2(16, 16)
+radius = 13.0
+height = 48.0
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(-111, 189)
+motion_mode = 1
 script = ExtResource("1_rp17y")
+max_health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_7jjwj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_7w7ek")
+position = Vector2(9.53674e-07, -8.99999)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_v4ko0")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 35.0
@@ -29,3 +34,6 @@ debug_enabled = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("3_haslj")

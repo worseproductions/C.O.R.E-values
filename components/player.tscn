@@ -1,16 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdbslnkr821ac"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hxi8t"]
+[ext_resource type="Texture2D" uid="uid://b3wodkeqcf20" path="res://assets/sprites/characters/character_maleAdventurer_wide.png" id="2_bhblk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kl2yt"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tv08v"]
-size = Vector2(16, 28)
+radius = 13.0
+height = 48.0
 
 [node name="Player" type="CharacterBody2D"]
 physics_interpolation_mode = 1
 position = Vector2(-194, 33)
 collision_layer = 2
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_hxi8t")
 
@@ -19,17 +20,26 @@ shape = SubResource("CapsuleShape2D_kl2yt")
 debug_color = Color(0.423215, 0, 0.114052, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_tv08v")
+position = Vector2(-1, -9)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_bhblk")
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
 [node name="Charge" type="Timer" parent="."]
+one_shot = true
+
+[node name="SpeedBoostTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="BulletBoostTimer" type="Timer" parent="."]
+wait_time = 5.0
 one_shot = true

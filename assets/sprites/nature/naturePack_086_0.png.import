@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmslk025xtqsb"
-path="res://.godot/imported/corevalues_tower_of_doom.png-eba6895a1e1cb1cd38aff0602b989443.ctex"
+uid="uid://qargtikuinki"
+path="res://.godot/imported/naturePack_086_0.png-adf8443591073be348d95387802529f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/corevalues_tower_of_doom.png"
-dest_files=["res://.godot/imported/corevalues_tower_of_doom.png-eba6895a1e1cb1cd38aff0602b989443.ctex"]
+source_file="res://assets/sprites/nature/naturePack_086_0.png"
+dest_files=["res://.godot/imported/naturePack_086_0.png-adf8443591073be348d95387802529f7.ctex"]
 
 [params]
 

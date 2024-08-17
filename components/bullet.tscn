@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://certxgcwrs0j3"]
+[gd_scene load_steps=5 format=3 uid="uid://certxgcwrs0j3"]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_mrqb5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kuomi"]
 radius = 2.0
+
+[sub_resource type="Gradient" id="Gradient_e0gjq"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4a3u8"]
+gradient = SubResource("Gradient_e0gjq")
+width = 4
 
 [node name="Bullet" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -18,3 +24,7 @@ shape = SubResource("CircleShape2D_kuomi")
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 4)
+texture = SubResource("GradientTexture1D_4a3u8")

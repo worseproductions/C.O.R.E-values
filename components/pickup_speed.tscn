@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://btjg34k5gea07"]
+
+[ext_resource type="PackedScene" uid="uid://ysynbgq4t2h5" path="res://components/pickup.tscn" id="1_3tca8"]
+
+[node name="PickupSpeed" instance=ExtResource("1_3tca8")]
+pickup_type = 1
+pickup_strength = 2.0
