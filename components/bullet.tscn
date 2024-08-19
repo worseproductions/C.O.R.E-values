@@ -9,9 +9,11 @@ radius = 2.0
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_4a3u8"]
 gradient = SubResource("Gradient_e0gjq")
-width = 4
+width = 8
 
 [node name="Bullet" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
@@ -26,5 +28,5 @@ one_shot = true
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1, 4)
+scale = Vector2(1, 8)
 texture = SubResource("GradientTexture1D_4a3u8")

@@ -54,6 +54,7 @@ func shoot(is_special: bool = false):
 	add_child(bullet_instance)
 	var mouse_pos = get_global_mouse_position()
 	var bullet_direction = mouse_pos - global_position
+	bullet_instance.direction = bullet_direction.normalized()
 	bullet_instance.position = bullet_direction.normalized() * 50
 	bullet_instance.apply_impulse(bullet_direction.normalized() * bullet_speed)
 	cooldown.start()

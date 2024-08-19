@@ -4,4 +4,3 @@
 
 [node name="PickupShootingSpeed" instance=ExtResource("1_5cjof")]
 pickup_type = 2
-pickup_strength = 1.0

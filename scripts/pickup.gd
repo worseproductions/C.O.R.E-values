@@ -1,3 +1,4 @@
+class_name Pickup
 extends Node2D
 
 enum PickupType {
@@ -30,5 +31,4 @@ func _on_body_entered(body: Object):
 			player.speed_boost(pickup_strength)
 		PickupType.SHOOTING_SPEED:
 			player.bullet_boost(pickup_strength)
-	
 	queue_free()

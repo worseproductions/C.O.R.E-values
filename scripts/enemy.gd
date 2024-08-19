@@ -17,9 +17,10 @@ enum EnemyState {
 @export var attack_damage = 5
 @export var crit_damage = 10
 @export var crit_chance = 0.1
-@export var attack_cooldown = 1
+@export var attack_cooldown = 1.0
 @export var state: EnemyState = EnemyState.PATROL
 @export var max_health = 10
+@export_range(0, 1) var drop_chance = 0.5
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var player: Player = %Player
@@ -27,6 +28,10 @@ enum EnemyState {
 @onready var cooldown_timer: Timer = $AttackCooldown
 @onready var game_manager: GameManager = $"/root/GameManager"
 @onready var health = max_health
+
+@onready var health_pickup = preload("res://components/pickup_health.tscn")
+@onready var speed_pickup = preload("res://components/pickup_speed.tscn")
+@onready var bullet_speed_pickup = preload("res://components/pickup_shooting_speed.tscn")
 
 var last_known_pos: Vector2
 
@@ -111,9 +116,21 @@ func attack_player():
 	player.take_damage(damage)
 	cooldown_timer.start()
 
-func take_damage(damage: int):
+func take_damage(damage: int, direction: Vector2):
 	health -= damage
+	state = EnemyState.SEARCH
+	nav_agent.target_position = global_position - direction * search_radius
 	health_changed.emit(max_health, health)
 	if health <= 0:
 		game_manager.increase_kill_count()
+		if (randf() < drop_chance):
+			match randi_range(0, 2):
+				0: drop(health_pickup)
+				1: drop(speed_pickup)
+				2: drop(bullet_speed_pickup)
 		queue_free()
+
+func drop(scene: PackedScene):
+	var dropped_item: Pickup = scene.instantiate()
+	add_sibling(dropped_item)
+	dropped_item.global_position = global_position

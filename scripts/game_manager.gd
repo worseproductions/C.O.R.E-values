@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-@export var kills_to_next_infection: int = 2
+@export var kills_to_next_infection: int = 1
+@export var additional_kills_per_level: int = 0
 
 var kills = 0
 
@@ -17,4 +18,4 @@ func increase_kill_count():
 
 func next_level():
 	kills = 0
-	kills_to_next_infection += 1
+	kills_to_next_infection += additional_kills_per_level

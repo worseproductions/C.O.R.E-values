@@ -53,6 +53,10 @@ attack={
 2d_navigation/layer_2="avoid"
 2d_physics/layer_3="pickups"
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
