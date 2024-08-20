@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="64"
+   height="68"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="button_square_gradient.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview5"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050" />
+  <defs
+     id="defs2">
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       x1="-819.20001"
+       x2="819.20001"
+       spreadMethod="pad"
+       gradientTransform="matrix(0,0.03411865,-0.03173828,0,176,34)"
+       id="gradient0">
+      <stop
+         offset="0"
+         stop-color="#35BAF3"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#1EA7E1"
+         id="stop2" />
+    </linearGradient>
+  </defs>
+  <g
+     id="g5"
+     transform="translate(0,4)">
+    <path
+       stroke="none"
+       fill="#167da8"
+       d="M 27.9,62 H 58 q 4,0 4,-4 V 19.85 L 61.95,19.2 V 18.95 H 62 V 6 L 61.95,5.05 Q 61.5,2 58,2 H 27.9 L 27.2,2.05 H 26.8 L 26.1,2 H 6 Q 2.5,2 2.1,5.05 L 2,6 V 18.95 H 2.05 V 19.2 L 2,19.85 V 58 q 0,4 4,4 h 20.1 l 0.7,-0.05 h 0.4 L 27.9,62 M 0,18.95 V 6 Q 0,0 6,0 h 52 q 6,0 6,6 V 18.95 L 63.95,19 64,19.4 V 58.25 Q 63.85,64 58,64 H 6 Q 0.15,64 0,58.25 V 19.4 L 0.05,19 V 18.95 H 0"
+       id="path2" />
+    <path
+       stroke="none"
+       fill="#36bdf7"
+       d="M 27.9,62 27.2,61.95 H 26.8 L 26.1,62 H 6 Q 2,62 2,58 V 19.85 L 2.05,19.2 V 18.95 H 2 V 6 L 2.1,5.05 Q 2.5,2 6,2 h 20.1 l 0.7,0.05 h 0.4 L 27.9,2 H 58 q 3.5,0 3.95,3.05 L 62,6 V 18.95 H 61.95 V 19.2 L 62,19.85 V 58 q 0,4 -4,4 H 27.9 M 27.45,4.05 H 27.2 26.8 26.55 L 26.1,4 H 6 Q 4.35,4 4.1,5.3 L 4.05,5.5 4,6 v 12.95 h 0.05 v 0.25 0.25 L 4,19.9 V 58 q 0,2 2,2 h 20.55 l 0.25,-0.05 h 0.4 L 27.45,60 H 28 58 q 2,0 2,-2 V 19.45 L 59.95,19.2 V 18.95 H 60 V 6 L 59.95,5.3 60,5.35 Q 59.65,4 58,4 H 27.95 l -0.5,0.05"
+       id="path3" />
+    <path
+       stroke="none"
+       fill="url(#gradient0)"
+       d="M 27.45,4.05 27.95,4 H 58 q 1.65,0 2,1.35 L 59.95,5.3 60,6 V 18.95 H 59.95 V 19.2 L 60,19.45 V 58 q 0,2 -2,2 H 28 27.45 L 27.2,59.95 H 26.8 L 26.55,60 H 6 Q 4,60 4,58 V 19.9 L 4.05,19.45 V 19.2 18.95 H 4 V 6 L 4.05,5.5 4.1,5.3 Q 4.35,4 6,4 h 20.1 l 0.45,0.05 h 0.25 0.4 0.25"
+       id="path4"
+       style="fill:url(#gradient0)" />
+    <path
+       stroke="none"
+       fill="#ff0000"
+       d="M 64,18.95 V 19.4 L 63.95,19 64,18.95 M 0,19.4 V 18.95 H 0.05 V 19 L 0,19.4"
+       id="path5" />
+  </g>
+</svg>

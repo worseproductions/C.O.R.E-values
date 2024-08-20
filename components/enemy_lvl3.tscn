@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu1m0ijtb4ngm"]
+
+[ext_resource type="PackedScene" uid="uid://b5em20nkus7n0" path="res://components/enemy.tscn" id="1_s7vcr"]
+
+[node name="Enemy" instance=ExtResource("1_s7vcr")]
+chase_speed = 250.0
+search_speed = 150.0
+patrol_radius = 100.0
+attack_damage = 20
+crit_damage = 30
+crit_chance = 0.3
+attack_cooldown = 0.2
+max_health = 7
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.75, 0.75)
+
+[node name="PointLight2D" parent="." index="5"]
+color = Color(1, 0.266667, 0.247059, 1)

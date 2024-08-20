@@ -1,15 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://certxgcwrs0j3"]
+[gd_scene load_steps=4 format=3 uid="uid://certxgcwrs0j3"]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_mrqb5"]
+[ext_resource type="Texture2D" uid="uid://bdcajab43ry8v" path="res://assets/sprites/icon_bullet_gold_long.png" id="2_a01cw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kuomi"]
-radius = 2.0
-
-[sub_resource type="Gradient" id="Gradient_e0gjq"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_4a3u8"]
-gradient = SubResource("Gradient_e0gjq")
-width = 8
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2n2ah"]
+radius = 5.0
+height = 22.0
 
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 3
@@ -20,7 +16,7 @@ max_contacts_reported = 1
 script = ExtResource("1_mrqb5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_kuomi")
+shape = SubResource("CapsuleShape2D_2n2ah")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -28,5 +24,6 @@ one_shot = true
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1, 8)
-texture = SubResource("GradientTexture1D_4a3u8")
+position = Vector2(2.38419e-07, 0)
+scale = Vector2(0.505952, 0.505953)
+texture = ExtResource("2_a01cw")

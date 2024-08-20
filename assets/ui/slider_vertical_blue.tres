@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://8qsdbdcadj6h"]
+
+[ext_resource type="Texture2D" uid="uid://b7jjvxb8ms1c6" path="res://assets/ui/slide_vertical_color.png" id="1_jblpn"]
+
+[resource]
+texture = ExtResource("1_jblpn")
+texture_margin_left = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 15.0
+region_rect = Rect2(0, 15, 16, 81)

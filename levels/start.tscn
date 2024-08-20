@@ -1,4 +1,19 @@
-[gd_scene format=3 uid="uid://b361h3xqbchvw"]
+[gd_scene load_steps=9 format=3 uid="uid://b361h3xqbchvw"]
+
+[ext_resource type="Theme" uid="uid://c5ec4tpb103re" path="res://assets/theme.tres" id="1_0wfei"]
+[ext_resource type="Script" path="res://scripts/start.gd" id="1_l6gwv"]
+[ext_resource type="Texture2D" uid="uid://crhxrol6wajwc" path="res://assets/sprites/Background.png" id="2_kn035"]
+[ext_resource type="Texture2D" uid="uid://di3aip8vkldpj" path="res://assets/sprites/gmtk2024-logo.png" id="3_5whw6"]
+[ext_resource type="Texture2D" uid="uid://c07btsumga6q0" path="res://assets/sprites/WorseLogoSquare.png" id="4_2dste"]
+[ext_resource type="Texture2D" uid="uid://c43ov583ueilx" path="res://assets/sprites/corevalues_logo2.png" id="4_hw77n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47w07"]
+atlas = ExtResource("4_2dste")
+region = Rect2(0, 611, 1878, 663)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g67a0"]
+atlas = ExtResource("4_hw77n")
+region = Rect2(309, 142, 1298, 750)
 
 [node name="Start" type="Control"]
 layout_mode = 3
@@ -7,3 +22,72 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_l6gwv")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kn035")
+stretch_mode = 6
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.822531
+anchor_right = 1.0
+anchor_bottom = 0.896605
+offset_top = 16.9997
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonStart" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("1_0wfei")
+text = "Start"
+
+[node name="ButtonQuit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_left = 0.798611
+anchor_top = 0.79321
+anchor_right = 0.983507
+anchor_bottom = 0.973765
+texture = ExtResource("3_5whw6")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0164931
+anchor_top = 0.82716
+anchor_right = 0.237847
+anchor_bottom = 0.970679
+texture = SubResource("AtlasTexture_47w07")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_left = 0.0078125
+anchor_top = 0.0169753
+anchor_right = 0.505208
+anchor_bottom = 0.520062
+texture = SubResource("AtlasTexture_g67a0")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true

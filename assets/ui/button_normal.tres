@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dsyhts2ehy5qd"]
+
+[ext_resource type="Texture2D" uid="uid://dw4g34oohx64o" path="res://assets/sprites/ui/button_square_depth_gradient.svg" id="1_sojmn"]
+
+[resource]
+texture = ExtResource("1_sojmn")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 10.0

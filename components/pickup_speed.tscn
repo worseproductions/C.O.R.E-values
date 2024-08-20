@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://btjg34k5gea07"]
+[gd_scene load_steps=3 format=3 uid="uid://btjg34k5gea07"]
 
 [ext_resource type="PackedScene" uid="uid://ysynbgq4t2h5" path="res://components/pickup.tscn" id="1_3tca8"]
+[ext_resource type="Texture2D" uid="uid://d3toor4v0wyp4" path="res://assets/sprites/genericItem_color_093.png" id="2_lu73p"]
 
 [node name="PickupSpeed" instance=ExtResource("1_3tca8")]
 pickup_type = 1
+pickup_strength = 1.5
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(-1.16825e-05, 4.76837e-06)
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("2_lu73p")

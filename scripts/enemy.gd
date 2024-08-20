@@ -23,10 +23,10 @@ enum EnemyState {
 @export_range(0, 1) var drop_chance = 0.5
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var player: Player = %Player
+@onready var player: Player = get_tree().current_scene.get_node("%Player")
 @onready var ray_cast: RayCast2D = $RayCast2D
 @onready var cooldown_timer: Timer = $AttackCooldown
-@onready var game_manager: GameManager = $"/root/GameManager"
+@onready var health_bar: ProgressBar = $ProgressBar
 @onready var health = max_health
 
 @onready var health_pickup = preload("res://components/pickup_health.tscn")
@@ -40,6 +40,7 @@ signal health_changed(max, current)
 func _ready() -> void:
 	nav_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 	cooldown_timer.wait_time = attack_cooldown
+	health_bar.max_value = max_health
 
 func set_movement_target(movement_target: Vector2):
 	nav_agent.set_target_position(movement_target)
@@ -121,13 +122,14 @@ func take_damage(damage: int, direction: Vector2):
 	state = EnemyState.SEARCH
 	nav_agent.target_position = global_position - direction * search_radius
 	health_changed.emit(max_health, health)
+	health_bar.value = health
 	if health <= 0:
-		game_manager.increase_kill_count()
+		GameManager.increase_kill_count()
 		if (randf() < drop_chance):
 			match randi_range(0, 2):
-				0: drop(health_pickup)
-				1: drop(speed_pickup)
-				2: drop(bullet_speed_pickup)
+				0: call_deferred("drop", health_pickup)
+				1: call_deferred("drop", speed_pickup)
+				2: call_deferred("drop", bullet_speed_pickup)
 		queue_free()
 
 func drop(scene: PackedScene):

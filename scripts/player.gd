@@ -13,7 +13,10 @@ extends CharacterBody2D
 @onready var charge: Timer = $Charge
 @onready var speed_boost_timer: Timer = $SpeedBoostTimer
 @onready var bullet_boost_timer: Timer = $BulletBoostTimer
-@onready var game_manager: GameManager = $"/root/GameManager"
+@onready var speed_boost_info: Control = get_tree().current_scene.get_node("%SpeedBoostInfo")
+@onready var speed_boost_info_progress_bar: Control = get_tree().current_scene.get_node("%SpeedBoostInfo/ProgressBar")
+@onready var shooting_speed_boost_info: Control = get_tree().current_scene.get_node("%ShootingSpeedBoostInfo")
+@onready var shooting_speed_boost_info_progress_bar: Control = get_tree().current_scene.get_node("%ShootingSpeedBoostInfo/ProgressBar")
 var bullet: PackedScene = preload("res://components/bullet.tscn")
 
 var health = max_health
@@ -22,11 +25,17 @@ var speed_boost_amount = 1.0
 var bullet_boost_amount = 1.0
 
 func _ready() -> void:
-	game_manager.update_health(max_health, health)
+	GameManager.update_health(max_health, health)
 	cooldown.wait_time = shooting_cooldown
 	charge.wait_time = charge_time
-	bullet_boost_timer.timeout.connect(func(): cooldown.wait_time = shooting_cooldown)
-	speed_boost_timer.timeout.connect(func(): speed_boost_amount = 1)
+	bullet_boost_timer.timeout.connect(func(): 
+		cooldown.wait_time = shooting_cooldown
+		shooting_speed_boost_info.visible = false
+	)
+	speed_boost_timer.timeout.connect(func(): 
+		speed_boost_amount = 1
+		speed_boost_info.visible = false
+	)
 
 func _input(event):
 	if event.is_action_pressed("attack"):
@@ -46,6 +55,12 @@ func _physics_process(_delta):
 	position += motion
 	move_and_slide()
 
+func _process(_delta: float) -> void:
+	if not speed_boost_timer.is_stopped():
+		speed_boost_info_progress_bar.value = speed_boost_timer.time_left
+	if not bullet_boost_timer.is_stopped():
+		shooting_speed_boost_info_progress_bar.value = bullet_boost_timer.time_left
+
 func shoot(is_special: bool = false):
 	if not cooldown.is_stopped():
 		return
@@ -54,6 +69,7 @@ func shoot(is_special: bool = false):
 	add_child(bullet_instance)
 	var mouse_pos = get_global_mouse_position()
 	var bullet_direction = mouse_pos - global_position
+	bullet_instance.rotate(-bullet_direction.angle_to(Vector2.UP))
 	bullet_instance.direction = bullet_direction.normalized()
 	bullet_instance.position = bullet_direction.normalized() * 50
 	bullet_instance.apply_impulse(bullet_direction.normalized() * bullet_speed)
@@ -61,16 +77,24 @@ func shoot(is_special: bool = false):
 
 func take_damage(damage: int):
 	health -= damage
-	game_manager.update_health(max_health, health)
+	GameManager.update_health(max_health, health)
 
 func heal(heal_amount: int):
 	health += heal_amount
-	game_manager.update_health(max_health, health)
+	if health >= max_health:
+		health = max_health
+	GameManager.update_health(max_health, health)
 
 func speed_boost(amount: float):
 	speed_boost_timer.start()
 	speed_boost_amount = amount
+	speed_boost_info.visible = true
+	speed_boost_info_progress_bar.max_value = speed_boost_timer.wait_time
+	speed_boost_info_progress_bar.value = speed_boost_timer.wait_time
 
 func bullet_boost(amount: float):
 	bullet_boost_timer.start()
 	cooldown.wait_time *= 1 / amount
+	shooting_speed_boost_info.visible = true
+	shooting_speed_boost_info_progress_bar.max_value = speed_boost_timer.wait_time
+	shooting_speed_boost_info_progress_bar.value = speed_boost_timer.wait_time

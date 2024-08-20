@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://f7jdwfle7ykr"]
+
+[ext_resource type="PackedScene" uid="uid://b5wt5bqahstm0" path="res://components/enemy_shooting_lvl2.tscn" id="1_rp1mr"]
+[ext_resource type="Texture2D" uid="uid://kanqfcslgk00" path="res://assets/sprites/blasterD.png" id="2_ujt7s"]
+
+[node name="EnemyShooting" instance=ExtResource("1_rp1mr")]
+attack_damage = 10
+crit_damage = 20
+attack_cooldown = 0.5
+max_health = 7
+drop_chance = 0.8
+
+[node name="NavigationAgent2D" parent="." index="2"]
+debug_enabled = true
+
+[node name="PointLight2D" parent="." index="5"]
+color = Color(1, 0, 0, 1)
+
+[node name="BlasterD" parent="." index="6"]
+texture = ExtResource("2_ujt7s")

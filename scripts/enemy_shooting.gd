@@ -13,6 +13,7 @@ func attack_player():
 	var random_offset = Vector2(randf_range(-accuracy, accuracy), randf_range(-accuracy, accuracy))
 	bullet_direction += random_offset
 	var bullet: Bullet = bullet_scene.instantiate()
+	bullet.rotate(-bullet_direction.angle_to(Vector2.UP))
 	bullet.damage = attack_damage
 	add_child(bullet)
 	bullet.position = bullet_direction.normalized() * 50

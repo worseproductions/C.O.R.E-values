@@ -1,18 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5em20nkus7n0"]
+[gd_scene load_steps=7 format=3 uid="uid://b5em20nkus7n0"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_rp17y"]
 [ext_resource type="Texture2D" uid="uid://cxin522bbk6x3" path="res://assets/sprites/characters/character_robot_wide.png" id="2_v4ko0"]
 [ext_resource type="Texture2D" uid="uid://3kk045oknbn5" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="3_haslj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7jjwj"]
-radius = 13.0
-height = 48.0
+radius = 15.0
+height = 50.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mannm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5ypw"]
+bg_color = Color(1, 0.332187, 0.359368, 1)
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(-111, 189)
 motion_mode = 1
 script = ExtResource("1_rp17y")
 max_health = 2
+drop_chance = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_7jjwj")
@@ -28,7 +33,6 @@ path_max_distance = 500.0
 avoidance_enabled = true
 avoidance_layers = 2
 avoidance_mask = 3
-debug_enabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
@@ -38,3 +42,20 @@ one_shot = true
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.5
 texture = ExtResource("3_haslj")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_left = -0.0625
+anchor_top = -0.111111
+anchor_right = 0.0625
+anchor_bottom = -0.0694444
+offset_left = -20.0
+offset_top = -30.0
+offset_right = -16.0
+offset_bottom = -26.0
+scale = Vector2(10, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_mannm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_s5ypw")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
